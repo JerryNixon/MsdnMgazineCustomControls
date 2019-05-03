@@ -1,0 +1,29 @@
+﻿<UserControl
+    x:Class="SampleApp.Controls.MyUserControl1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SampleApp.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <StackPanel>
+        <StackPanel Margin="0,20">
+            <TextBlock x:Name="EulaTextBox" x:FieldModifier="public" />
+            <CheckBox x:Name="MyCheckbox1" Content="I agree, with no logic." />
+            <Button IsEnabled="{x:Bind MyCheckbox1.IsChecked.Value, Mode=OneWay}" x:Name="MySubmitButton1">Submit</Button>
+        </StackPanel>
+        <StackPanel Margin="0,20">
+            <TextBlock x:Uid="LocalizedTextBox">Hard-coded lorem ipsum.</TextBlock>
+            <CheckBox x:Name="MyCheckbox2" Content="I agree, using classic binding." />
+            <Button IsEnabled="{Binding IsChecked, ElementName=MyCheckbox2}" x:Name="MySubmitButton2">Submit</Button>
+        </StackPanel>
+        <StackPanel Margin="0,20">
+            <TextBlock Text="{x:Bind EulaText, Mode=OneWay}" />
+            <CheckBox x:Name="MyCheckbox3" Content="I agree, using compiled binding." />
+            <Button IsEnabled="{x:Bind MyCheckbox3.IsChecked.Value, Mode=OneWay}" x:Name="MySubmitButton3">Submit</Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

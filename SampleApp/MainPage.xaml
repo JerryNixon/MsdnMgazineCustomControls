@@ -1,0 +1,35 @@
+﻿<Page xmlns:Controls="using:SampleApp.Controls" 
+    x:Class="SampleApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SampleApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" x:Name="This"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Pivot>
+            <PivotItem Header="Text">
+                <StackPanel>
+                    <ToggleSwitch Toggled="Debug_Toggled" Header="IsTextPerformanceVisualizationEnabled" />
+                    <TextBlock Text="Optimized text." />
+                    <TextBlock>Non-optimized text.</TextBlock>
+                </StackPanel>
+            </PivotItem>
+            <PivotItem Header="User Control">
+                <Controls:MyUserControl1 EulaText="{x:Bind ViewModel.EualText}" x:Name="MyUserControl" />
+            </PivotItem>
+            <PivotItem Header="Templated Control">
+                <Controls:MyControl1 x:Name="MyControl">
+                    Text provided by literal, in-line string.
+                </Controls:MyControl1>
+            </PivotItem>
+        </Pivot>
+        <TextBlock Grid.Column="1" Margin="0,20" VerticalAlignment="Top" x:Name="EventConsoleTextBlock" />
+    </Grid>
+</Page>
